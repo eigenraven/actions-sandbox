@@ -38,3 +38,8 @@ jobs:
           cat <<'EOF'
           ${{ toJson(job) }}
           EOF
+      - name: Print stuff
+        run: |
+          cat <<'EOF'
+          Assigned: ${{ join(github.event.pull_request.assignees.*.id, ', ') }}\nReviewers: ${{ join(github.event.pull_request.requested_reviewers.*.id, ', ') }}
+          EOF
